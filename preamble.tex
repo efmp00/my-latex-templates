@@ -1,0 +1,102 @@
+% Document class
+\documentclass[letterpaper, 11pt]{extbook}
+
+% ==================================================
+
+% Document parameters
+\usepackage[spanish, mexico, es-lcroman]{babel}
+\usepackage[left = 0.75 in,
+            right = 0.75 in,
+            top = 0.75 in,
+            bottom = 0.75 in]{geometry}
+
+% Page style
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+% Footers and Headers
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+
+\fancyhead[ER, OL]{\thepage}
+\fancyhead[OC]{\itshape\small\nouppercase\leftmark}
+\fancyhead[EC]{\itshape\small\nouppercase\rightmark}
+\renewcommand\chaptermark[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\def\rightmark{#1}}
+
+% \fancyhead[OL]{\bfseries\nouppercase\leftmark}
+% \fancyhead[ER]{\bfseries\nouppercase\rightmark}
+% \fancyfoot[OR, EL]{Tecnológico de Monterrey\\ School of Engineering and Sciences}
+% \fancyfoot[ER, OL]{\thepage}
+
+% ==================================================
+
+% Packages for math
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{physics}
+\usepackage{dsfont}
+\usepackage{esint}
+
+% ==================================================
+
+% Packages for writing
+\usepackage{enumerate}
+\usepackage[shortlabels]{enumitem}
+\usepackage{framed}
+\usepackage{csquotes}
+
+% ==================================================
+
+% TikZ packages
+\usepackage{tikz}
+\usepackage{tkz-euclide}
+\usepackage{tikz-3dplot}
+\usepackage{circuitikz}
+\usetikzlibrary{patterns}
+\usetikzlibrary{patterns.meta}
+\usetikzlibrary{calc, patterns, angles, quotes, arrows}
+\usetikzlibrary{quantikz2}
+\usetikzlibrary{circuits.logic.US, positioning, karnaugh}
+\tikzstyle{branch} = [fill, shape = circle, minimum size = 2pt, inner sep = 0pt]
+
+% ==================================================
+
+% Miscellaneous packages
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{multicol}
+\usepackage{subcaption}
+\usepackage{caption}
+\captionsetup{format = hang, margin = 10pt, font = small, labelfont = bf}
+
+% Citation
+\usepackage[round, authoryear]{natbib}
+
+% Hyperlinks setup
+\usepackage{hyperref}
+\definecolor{links}{rgb}{0.36,0.54,0.66}
+\hypersetup{
+   colorlinks = true,
+    linkcolor = blue,
+     urlcolor = blue,
+    citecolor = blue,
+    filecolor = blue,
+    pdfauthor = {Author},
+     pdftitle = {Title},
+   pdfsubject = {subject},
+  pdfkeywords = {one, two},
+  pdfproducer = {LaTeX},
+   pdfcreator = {pdfLaTeX},
+   }
+
+% Indent suppresing
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1ex}
+
+% Package for dummy text (only for testing, can be remove without any issue)
+\usepackage{lipsum} 
