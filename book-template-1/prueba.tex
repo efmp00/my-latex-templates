@@ -13,40 +13,6 @@ For every complex number $z$ (except the non-positive integers), the gamma funct
 where $\gamma \approx 0.577216$ is the \textit{Euler-Mascheroni constant}.
 \end{definicion}
 
-To display an output similar to the previous one, we shall use the following command:
-
-\begin{minted}[bgcolor = bgcode, linenos, breaklines]{tex}
-\begin{#1}{#2}{#3}
-    Example text
-\end{#1}
-\end{minted}
-
-Notice there are three entries when using an environment like this one.
-\begin{itemize}
-    \item \verb|{#1}|\\ 
-    The first entry specifies what command you want to use. You can choose \texttt{teorema}, \texttt{definicion}, \texttt{lema}, \texttt{corolario}, \texttt{ejemplo}, \texttt{problema}, or \texttt{nota}.
-
-    \item \verb|{#2}|\\
-    The second entry displays the name of the theorem, exercise, or of any other command. In the aforementioned example, it was \textquote{Weierstrass's definition of $\Gamma(z)$}.
-
-    \item \verb|{#3}|\\
-    The last entry is used for labels. Let's say you want to go back to a previous result, proof, or anything else. You can create a cross reference with \verb|\ref{command:your_label}|. For the example, it'd be \verb|\ref{definicion:Weierstrass}|.
-\end{itemize}
-
-Therefore, to display the definition \ref{definicion:Weierstrass}, you should write
-\begin{minted}[bgcolor = bgcode, linenos, breaklines]{tex}
-\begin{definicion}{Weierstrass's definition of $\Gamma(z)$}{Weierstrass}
-For every complex number $z$ (except the non-positive integers), the gamma function is defined as
-\[
-\Gamma(z) := \dfrac{\eu^{-\gamma z}}{z} \prod_{n = 1}^{\infty}\left(1 + \dfrac{z}{n}\right)^{-1} \eu^{\frac{z}{n}},
-\]
-
-where $\gamma \approx 0.577216$ is the \textit{Euler-Mascheroni constant}.
-\end{definicion}
-\end{minted}
-
-I think I must mention that the command \verb|\eu| won't work without the \verb|commands.tex| file since is a definition I added myself and it's not native of \LaTeX. The same goes for the imaginary unit with \verb|\im|.
-
 \subsection{This is a test subsection}
 It'd be usefull to show a second example. This time, we shall use the \texttt{problem} environment.
 
@@ -59,24 +25,6 @@ Show that the curl of a vector field in orthogonal curvilinear coordinates is gi
 \end{align*}
 \end{problema}
 
-This time, I used one of the \texttt{physics} package commands, \verb|\pdv{}{}|. However, this package also includes another command used for second mixed partial derivatives, let's say \verb|\pdv*{f}{x}{y}|, which produces $\pdv*{f}{x}{y}$, or without the star,
-\[
-\verb|\pdv{f}{x}{y}| \quad \to \quad \pdv{f}{x}{y}.
-\]
-
-Therefore, when you write parenthesis to the right of the command \verb|\pdv{}{}|, they won't be displayed. To fix this, instead of writing \verb|\pdv{}{}|, you could use \verb|{\pdv{}{}}|, solving the problem. Once again, that only happens when the parenthesis is right next to the command, but it shouldn't happen in other situations. To display this example, you should use the following:
-
-\begin{minted}[bgcolor = bgcode, linenos, breaklines]{tex}
-\begin{problema}{Curvilinear coordinates}{}
-Show that the curl of a vector field in orthogonal curvilinear coordinates is given by
-\begin{align*}
-    \nabla \times \vb{v}
-    &= \dfrac{1}{h_{1} h_{2} h_{3}} \left[ h_{1} \left\lbrace {\pdv{}{u_{2}}} (h_{3} v_{3}) - {\pdv{}{u_{3}}} (h_{2} v_{2}) \right\rbrace \vu{e}_{1} + h_{2} \left\lbrace {\pdv{}{u_{3}}} (h_{1} v_{1}) - {\pdv{}{u_{1}}} (h_{3} v_{3}) \right\rbrace \vu{e}_{2} \right.\\
-    &+ \left. h_{3} \left\lbrace {\pdv{}{u_{1}}} (h_{2} v_{2}) - {\pdv{}{u_{2}}} (h_{1} v_{1}) \right\rbrace \vu{e}_{3} \right].
-\end{align*}
-\end{problema}
-\end{minted}
-
 \section{Last example}
 As a last example, I should show a theorem:
 
@@ -87,17 +35,3 @@ Let $D$ be a domain and $\gamma$ a contour such that $D\subset\gamma$, if $f$ is
 where
 \[\mathrm{Res} [f(z), z_{k}] = \dfrac{1}{(n - 1)!}\lim_{z \to z_{k}} \dv[n - 1]{}{z} \left[(z - z_{k})^n f(z)\right].\]
 \end{teorema}
-
-To see how to display this, take a look at the following code block:
-
-\begin{minted}[bgcolor = bgcode, linenos, breaklines]{tex}
-\begin{teorema}{Residue Theorem}{}
-Let $D$ be a domain and $\gamma$ a contour such that $D\subset\gamma$, if $f$ is analytic in and on $\gamma$, except for a finite number of singularities $z_{1}$, $z_{2}$, $\ldots$, $z_{n}$, then
-\[\ointctrclockwise \limits_{\gamma} f(z) \dd{z} = 2 \pi \im \sum_{k = 1}^{m} \mathrm{Res} [f(z), z_{k}],\]
-
-where
-\[\mathrm{Res} [f(z), z_{k}] = \dfrac{1}{(n - 1)!}\lim_{z \to z_{k}} \dv[n - 1]{}{z} \left[(z - z_{k})^n f(z)\right].\]
-\end{teorema}
-\end{minted}
-
-To use the command \verb|\ointctrclockwise|, you should add the package \verb|\usepackage{esint}| (already included in the preamble). 
