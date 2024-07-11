@@ -1,89 +1,103 @@
-\chapter{Esto es un capítulo}
-\lipsum[1-1]
+\chapter{This is a test chapter}
+This is a test chapter where I want to show how to use some commands and environments, such as the theorem box, the example box, and more. For instance, let's see how the commands for the exponential function (or Euler's constant) and the derivative (and partial derivative) work. 
 
-\section{Esto es una sección}
-\lipsum[2-2]
+\section{This a test section}
+As an example, let's take a look at the Weierstrass's definition of the gamma function:
 
-\begin{teorema}{Teorema del residuo}{}{}
-Sea $D$ un dominio y $\gamma$ un contorno tal que $D \subset \gamma$, si $f$ analítica en y sobre $\gamma$, excepto por un número finito de singularidades $z_{1}$, $z_{2}$, $\ldots$, $z_{n}$, entonces
-\[\ointctrclockwise\limits_{\gamma} f(z) \dd{z} = 2 \pi \im \sum_{k = 1}^{m}\mathrm{Res}(f(z), z_{k}),\]
+\begin{definicion}{Weierstrass's definition of $\Gamma(z)$}{Weierstrass}
+For every complex number $z$ (except the non-positive integers), the gamma function is defined as
+\[
+\Gamma(z) := \dfrac{\eu^{-\gamma z}}{z} \prod_{n = 1}^{\infty}\left(1 + \dfrac{z}{n}\right)^{-1} \eu^{\frac{z}{n}},
+\]
 
-donde
-\[\mathrm{Res}[f(z),z_{k}] = \dfrac{1}{(n - 1)!}\lim_{z \to 
- z_{k}}\dv[n - 1]{}{z}\left[(z - z_{k})^n f(z)\right].\]
-\end{teorema}
-
-\subsection{Esto es una subsección}
-\lipsum[3-3]
-
-\begin{definicion}{Principio de equivalencia fuerte}{}{}
-El \emph{principio de equivalencia fuerte} establece los siguientes puntos:
-\begin{itemize}
-    \item La dinámica interna de un sistema gravitacional no puede ser alterada por campos gravitacionales externos más allá de las fuerzas de marea\footnote{No obstante, existen teorías que violan esto, por ejemplo, \textit{Brans-Dicke}, \textit{MOND}, entre otras.}.
-
-    \item Todas las leyes de la naturaleza son las mismas en un campo gravitacional uniforme y en el sistema de referencia acelerado equivalente.
-
-    \item La constante de gravitación universal $G$ es una constante en el tiempo.
-\end{itemize}
+where $\gamma \approx 0.577216$ is the \textit{Euler-Mascheroni constant}.
 \end{definicion}
 
-\begin{ejemplo}{}{}{}
-Demostrar que
+To display an output similar to the previous one, we shall use the following command:
+
+\begin{minted}[bgcolor = bgcode, linenos, breaklines]{tex}
+\begin{#1}{#2}{#3}
+    Example text
+\end{#1}
+\end{minted}
+
+Notice there are three slots when using an environment like this one.
+\begin{itemize}
+    \item \verb|{#1}|\\ 
+    The first slot specifies what command you want to use. You can choose \texttt{teorema}, \texttt{definicion}, \texttt{lema}, \texttt{corolario}, \texttt{ejemplo}, \texttt{problema}, or \texttt{nota}.
+
+    \item \verb|{#2}|\\
+    The second slot displays the name of the theorem, exercise, or of any other command. In the aforementioned example, it was \textquote{Weierstrass's definition of $\Gamma(z)$}.
+
+    \item \verb|{#3}|\\
+    The last slot is used for labels. Let's say you want to go back to a previous result, proof, or anything else. You can create a cross reference with \verb|\ref{command:your_label}|. For the example, it'd be \verb|\ref{definicion:Weierstrass}|.
+\end{itemize}
+
+Therefore, to display the definition \ref{definicion:Weierstrass}, you should write
+\begin{minted}[bgcolor = bgcode, linenos, breaklines]{tex}
+\begin{definicion}{Weierstrass's definition of $\Gamma(z)$}{Weierstrass}
+For every complex number $z$ (except the non-positive integers), the gamma function is defined as
 \[
-(\hat{X} \hat{Y})^{\dagger} = \hat{Y}^{\dagger} \hat{X}^{\dagger}.
+\Gamma(z) := \dfrac{\eu^{-\gamma z}}{z} \prod_{n = 1}^{\infty}\left(1 + \dfrac{z}{n}\right)^{-1} \eu^{\frac{z}{n}},
 \]
-\end{ejemplo}
 
-\begin{problema}{Función digamma}{}{}
-Se define la \textit{función digamma} como
-\begin{equation}
-    \psi(z) = \dv{}{z}\ln\left[\Gamma(z)\right] =\dfrac{\Gamma'(z)}{\Gamma(z)};
-\end{equation}
+where $\gamma \approx 0.577216$ is the \textit{Euler-Mascheroni constant}.
+\end{definicion}
+\end{minted}
 
-a su vez, se define el $n$-ésimo \textit{número armónico} como
- \begin{equation}
-    H_{n} = \sum_{k = 1}^{n}\dfrac{1}{k}.
-\end{equation}
+I think I must mention that the command \verb|\eu| won't work without the \verb|commands.tex| file since is a definition I added myself and it's not native of \LaTeX. The same goes for the imaginary unit with \verb|\im|.
 
-\textit{Encontrar una relación entre la función digamma y los números armónicos}.
+\subsection{This is a test subsection}
+It'd be usefull to show a second example. This time, we shall use the \texttt{problem} environment.
+
+\begin{problema}{Curvilinear coordinates}{curvicoordinates}
+Show that the curl of a vector field in orthogonal curvilinear coordinates is given by
+\begin{align*}
+    \nabla \times \vb{v}
+    &= \dfrac{1}{h_{1}h_{2}h_{3}}\left[h_{1} \left\lbrace {\pdv{}{u_{2}}} (h_{3}v_{3}) - {\pdv{}{u_{3}}} (h_{2}v_{2})\right\rbrace \vu{e}_{1} + h_{2}\left\lbrace {\pdv{}{u_{3}}} (h_{1}v_{1}) - {\pdv{}{u_{1}}} (h_{3}v_{3}) \right\rbrace \vu{e}_{2}\right.\\
+    &+ \left. h_{3} \left\lbrace {\pdv{}{u_{1}}} (h_{2}v_{2}) - {\pdv{}{u_{2}}} (h_{1}v_{1}) \right\rbrace \vu{e}_{3}\right].
+\end{align*}
 \end{problema}
 
-\section{Prueba}
-A continuación, se propone la demostración de una identidad relacionada a la traza parcial.
-
-\begin{proposicion}{Identidad de una traza parcial}{}{}
-Si $\mathcal{X}$ y $\mathcal{Y}$ son espacios euclídeos complejos, entonces 
+This time, I used one of the \texttt{physics} package commands, \verb|\pdv{}{}|. However, this package also includes another command used for second mixed partial derivatives, let's say \verb|\pdv*{f}{x}{y}|, which produces $\pdv*{f}{x}{y}$, or without the star,
 \[
-\Tr_{\mathcal{Y}} [(\hat{X} \otimes \mathds{1}_{\mathcal{Y}})\hat{\rho}] = \hat{X} \Tr_{\mathcal{Y}} (\hat{\rho})
+\verb|\pdv{f}{x}{y}| \quad \to \quad \pdv{f}{x}{y}.
 \]
 
-para dos operadores $\hat{X} \in \mathcal{L}(\mathcal{X})$ y $\hat{\rho} \in \mathcal{L}(\mathcal{X} \otimes \mathcal{Y})$.
-\end{proposicion}
+Therefore, when you write parenthesis to the right of the command \verb|\pdv{}{}|, they won't be displayed. To fix this, instead of writing \verb|\pdv{}{}|, you could use \verb|{\pdv{}{}}|, solving the problem. Once again, that only happens when the parenthesis is right next to the command, but it shouldn't happen in other situations. To display this example, you should use the following:
 
-Sean $\mathcal{X}$ y $\mathcal{Y}$ dos espacios euclídeos complejos asociados a los alfabetos $\Gamma$ y $\Sigma$, respectivamente. Además, sean $\hat{X}$ y $\hat{\rho}$ dos operadores tales que $\hat{X} \in \mathcal{L}(\mathcal{X})$ y $\hat{\rho} \in \mathcal{L}(\mathcal{X} \otimes \mathcal{Y})$. En particular, $\hat{\rho}$ puede ser escrito como
-\[
-\hat{\rho} = \sum_{i \in \Gamma} \sum_{j \in \Sigma} c_{ij} \hat{A}_{i} \otimes \hat{B}_{j} \in \mathcal{L}(\mathcal{X}, \mathcal{Y}),
-\]
-
-donde $c_{ij} \in \mathbb{C}$. Por lo tanto, véase que
+\begin{minted}[bgcolor = bgcode, linenos, breaklines]{tex}
+\begin{problema}{Curvilinear coordinates}{}
+Show that the curl of a vector field in orthogonal curvilinear coordinates is given by
 \begin{align*}
-    (\hat{X} \otimes \mathds{1}_{\mathcal{Y}}) \hat{\rho}
-    &= (\hat{X} \otimes \mathds{1}_{\mathcal{Y}})\left(\sum_{i \in \Gamma} \sum_{j \in \Sigma} c_{ij} \hat{A}_{i} \otimes \hat{B}_{j}\right)\\
-    &= \sum_{i \in \Gamma} \sum_{j \in \Sigma} c_{ij}(\hat{X} \hat{A}_{i}) \otimes (\mathds{1}_{\mathcal{Y}} \hat{B}_{j}) = \sum_{i \in \Gamma} \sum_{j \in \Sigma} c_{ij} \hat{X} \hat{A}_{i} \otimes \hat{B}_{j}.
+    \nabla \times \vb{v}
+    &= \dfrac{1}{h_{1} h_{2} h_{3}} \left[ h_{1} \left\lbrace {\pdv{}{u_{2}}} (h_{3} v_{3}) - {\pdv{}{u_{3}}} (h_{2} v_{2}) \right\rbrace \vu{e}_{1} + h_{2} \left\lbrace {\pdv{}{u_{3}}} (h_{1} v_{1}) - {\pdv{}{u_{1}}} (h_{3} v_{3}) \right\rbrace \vu{e}_{2} \right.\\
+    &+ \left. h_{3} \left\lbrace {\pdv{}{u_{1}}} (h_{2} v_{2}) - {\pdv{}{u_{2}}} (h_{1} v_{1}) \right\rbrace \vu{e}_{3} \right].
 \end{align*}
+\end{problema}
+\end{minted}
 
-Ahora, se aplica la traza parcial:
-\begin{align*}
-    \Tr_{\mathcal{Y}}[(\hat{X} \otimes \mathds{1}_{\mathcal{Y}})\hat{\rho}]
-    &= \Tr_{\mathcal{Y}}\left(\sum_{i\in\Gamma} \sum_{j\in\Sigma} c_{ij}\hat{X}\hat{A}_{i} \otimes \hat{B}_{j}\right)\\
-    &= \sum_{i\in\Gamma} \sum_{j\in\Sigma} c_{ij}\hat{X}\hat{A}_{i} \Tr(\hat{B}_{j}).
-\end{align*}
+\section{Last example}
+As a last example, I should show a theorem:
 
-Se aprecia que es posible sacar $\hat{X}$ de la suma. Esto conlleva que
-\begin{align*}
-    \Tr_{\mathcal{Y}} [(\hat{X} \otimes \mathds{1}_{\mathcal{Y}})\hat{\rho}]
-    &= \hat{X} \sum_{i \in \Gamma} \sum_{j \in \Sigma} c_{ij} \hat{A}_{i} \Tr(\hat{B}_{j})\\
-    &= \hat{X} \Tr_{\mathcal{Y}} \left(\sum_{i\in\Gamma} \sum_{j \in \Sigma} c_{ij} \hat{A}_{i} \otimes \hat{B}_{j}\right) = \hat{X} \Tr_{\mathcal{Y}} (\hat{\rho}).
-\end{align*}
+\begin{teorema}{Residue Theorem}{}
+Let $D$ be a domain and $\gamma$ a contour such that $D\subset\gamma$, if $f$ is analytic in and on $\gamma$, except for a finite number of singularities $z_{1}$, $z_{2}$, $\ldots$, $z_{n}$, then
+\[\ointctrclockwise \limits_{\gamma} f(z) \dd{z} = 2 \pi \im \sum_{k = 1}^{m} \mathrm{Res} [f(z), z_{k}],\]
 
-\lipsum[4-4]
+where
+\[\mathrm{Res} [f(z), z_{k}] = \dfrac{1}{(n - 1)!}\lim_{z \to z_{k}} \dv[n - 1]{}{z} \left[(z - z_{k})^n f(z)\right].\]
+\end{teorema}
+
+To see how to display this, take a look at the following code block:
+
+\begin{minted}[bgcolor = bgcode, linenos, breaklines]{tex}
+\begin{teorema}{Residue Theorem}{}
+Let $D$ be a domain and $\gamma$ a contour such that $D\subset\gamma$, if $f$ is analytic in and on $\gamma$, except for a finite number of singularities $z_{1}$, $z_{2}$, $\ldots$, $z_{n}$, then
+\[\ointctrclockwise \limits_{\gamma} f(z) \dd{z} = 2 \pi \im \sum_{k = 1}^{m} \mathrm{Res} [f(z), z_{k}],\]
+
+where
+\[\mathrm{Res} [f(z), z_{k}] = \dfrac{1}{(n - 1)!}\lim_{z \to z_{k}} \dv[n - 1]{}{z} \left[(z - z_{k})^n f(z)\right].\]
+\end{teorema}
+\end{minted}
+
+To use the command \verb|\ointctrclockwise|, you should add the package \verb|\usepackage{esint}| (already included in the preamble). 
