@@ -21,16 +21,16 @@ To display an output similar to the previous one, we shall use the following com
 \end{#1}
 \end{minted}
 
-Notice there are three slots when using an environment like this one.
+Notice there are three entries when using an environment like this one.
 \begin{itemize}
     \item \verb|{#1}|\\ 
-    The first slot specifies what command you want to use. You can choose \texttt{teorema}, \texttt{definicion}, \texttt{lema}, \texttt{corolario}, \texttt{ejemplo}, \texttt{problema}, or \texttt{nota}.
+    The first entry specifies what command you want to use. You can choose \texttt{teorema}, \texttt{definicion}, \texttt{lema}, \texttt{corolario}, \texttt{ejemplo}, \texttt{problema}, or \texttt{nota}.
 
     \item \verb|{#2}|\\
-    The second slot displays the name of the theorem, exercise, or of any other command. In the aforementioned example, it was \textquote{Weierstrass's definition of $\Gamma(z)$}.
+    The second entry displays the name of the theorem, exercise, or of any other command. In the aforementioned example, it was \textquote{Weierstrass's definition of $\Gamma(z)$}.
 
     \item \verb|{#3}|\\
-    The last slot is used for labels. Let's say you want to go back to a previous result, proof, or anything else. You can create a cross reference with \verb|\ref{command:your_label}|. For the example, it'd be \verb|\ref{definicion:Weierstrass}|.
+    The last entry is used for labels. Let's say you want to go back to a previous result, proof, or anything else. You can create a cross reference with \verb|\ref{command:your_label}|. For the example, it'd be \verb|\ref{definicion:Weierstrass}|.
 \end{itemize}
 
 Therefore, to display the definition \ref{definicion:Weierstrass}, you should write
