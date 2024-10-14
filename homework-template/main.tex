@@ -2,9 +2,6 @@
 \input{format}
 \input{commands}
 
-% \setcounter{secnumdepth}{-1}
-% \setlist[enumerate]{noitemsep}
-
 \begin{document}
 
 \begin{Large}
@@ -16,25 +13,63 @@
 \vspace{1ex}
 
 \textsf{\textbf{Student:}} \text{Your name}, \href{mailto:your.email@hotmail.com}{\texttt{your.email@hotmail.com}}\\
-\textsf{\textbf{Lecturer:}} \text{Teacher's name}, \href{mailto:teacher.email@hotmail.com}{\texttt{teacher.email@hotmail.com}}\\
-\textsf{\textbf{Exercise class teacher:}} \text{TA name}, \href{mailto:ta.email@hotmail.com}{\texttt{ta.email@hotmail.com}}
+\textsf{\textbf{Lecturer:}} \text{Teacher's name}, \href{mailto:teacher.email@hotmail.com}{\texttt{teacher.email@hotmail.com}}
 
-% \textcolor{white}{\textsuperscript{$\dagger$}}\:\textit{Instituto \textbf{Tecnológico} y de Estudios Superiores \textbf{de Monterrey}}\\
-% \textcolor{white}{\textsuperscript{$\dagger$}}\:\textit{Av. Eugenio Garza Sada 2501 Sur, Tecnológico, 64849 Monterrey, Nuevo León, México}
 
-\vspace{5.25ex}
+\vspace{2ex}
 
-% \hrule
+Here I show a very basic example of using the \textquote{\texttt{problem}} environment I defined using the \verb|\tcolorbox| package. You can define your own environments following the problem environment in the \texttt{format.tex} file.
 
-% \vspace{3ex}
+\begin{problem}{Your title}{problem-label}
+This is an example problem taken from \cite{Sakurai2020}:
 
-\input{problems/P1} \newpage
+\begin{enumerate}[(a)]
+    \item Prove the following
+    \begin{enumerate}[label = (\roman*)]
+        \item $\langle p' | x | \alpha \rangle = \im \hbar \pdv{}{p'} \langle p' | \alpha \rangle$.
+
+        \item $\langle \beta | x | \alpha \rangle = \int \dd{p'} \phi_{\beta}^{*} (p') \im \hbar \pdv{}{p'} \phi_{\alpha} (p'),$
+
+        where $\phi_{\alpha}(p') = \langle p' | \alpha \rangle$ and $\phi_{\beta}(p') = \langle p' | \beta \rangle$ are momentum-space wave functions.
+    \end{enumerate}
+
+    \item What is the physical significance of 
+    \[
+    \exp\left(\dfrac{\im x \Xi}{\hbar}\right),
+    \]
+
+    where $x$ is the position operator and $\Xi$ is some number with the dimension of momentum? Justify your answer.
+\end{enumerate}
+\end{problem}
+
+Notice that the partial derivative and integral are smaller when used in a sentence compared with when you're working in a math environment like \verb|\begin{equation} \end{equation}|. If you want to display the full size of such commands in a sentence, you must use the command \verb|\displaystyle{}|, like it's shown here:
+
+\begin{problem}{Your title}{problem-label-2}
+This is an example problem taken from \cite{Sakurai2020}:
+
+\begin{enumerate}[(a)]
+    \item Prove the following
+    \begin{enumerate}[label = (\roman*)]
+        \item $\langle p' | x | \alpha \rangle = \im \hbar \displaystyle{\pdv{}{p'} }\langle p' | \alpha \rangle$.
+
+        \item $\langle \beta | x | \alpha \rangle = \displaystyle{\int \dd{p'} \phi_{\beta}^{*} (p') \im \hbar \pdv{}{p'} \phi_{\alpha} (p')}$, 
+
+        \vspace{1ex}
+
+        where $\phi_{\alpha}(p') = \langle p' | \alpha \rangle$ and $\phi_{\beta}(p') = \langle p' | \beta \rangle$ are momentum-space wave functions.
+    \end{enumerate}
+
+    \item $\cdots$
+\end{enumerate}
+\end{problem}
+
+I use the package \texttt{physics} which provides a great variety of commands for common operations and symbols. For instance, instead of typing \verb|\dfrac{\partial x}{\partial t}|, the \texttt{physics} package provides the command \verb|\pdv{x}{t}| which gives the same result. I also defined my commands, so you can take a look in the \texttt{commands.tex} file if you like. I'd also suggest creating a folder and work each problem in a separate \texttt{.tex} file. I already included such a folder in the \texttt{Overleaf} template, but you won't see it if you download the \texttt{Github} template. 
+
+% =================================================
 
 % \newpage
 
 % \vfill
-
-% \hrule 
 
 \bibliographystyle{apalike}
 \bibliography{references}
