@@ -2,7 +2,6 @@
 \usepackage[many]{tcolorbox}
 
 % Adjust spacing after the chapter title
-% \titlespacing*{<command>}{<left>}{<before-sep>}{<after-sep>}
 \titlespacing*{\chapter}{0cm}{-2.0cm}{0.50cm}
 \titlespacing*{\section}{0cm}{0.50cm}{0.25cm}
 
@@ -13,8 +12,7 @@
 % --- Theorems, lemma, corollary, postulate, definition ---
 % \numberwithin{equation}{section}
 
-
-\newtcbtheorem[]{problema}{Problem}%
+\newtcbtheorem[]{problem}{Problem}%
     {enhanced,
     colback = black!5, %white,
     colbacktitle = black!5,
@@ -26,6 +24,8 @@
     breakable,
     before skip = 3ex,
     after skip = 3ex
-}{problema}
+}{problem}
 
 \tcbuselibrary{skins, breakable}
+
+% --- You can define your own color box. Just copy the previous \newtcbtheorm definition and use the colors of your liking and the title you want to use.
